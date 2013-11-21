@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Merchant</title>
+    </head>
+
+    <body>
+        <h1>{{ category_name }}</h1>
+        {% if category %}
+            {% if subCategories %}
+            <ul>
+                {% for sc in subCategories %}
+                <li><a href="/merchant/subCategory/{{ sc.name }}">{{ sc.name }}</a></li>                
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No sub Categories currently in category.</strong>
+            {% endif %}
+        {% else %}
+            The specified category {{ category_name }} does not exist!
+        {% endif %}
+    </body>
+</html>

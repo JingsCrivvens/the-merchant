@@ -1,0 +1,14 @@
+{% load mptt_tags %}
+<ul>
+    {% full_tree_for_model merchant.CatalogCategory as categorys %}    
+    {% recursetree categorys %}
+        <li>
+            {{ node.name }}
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
+</ul>

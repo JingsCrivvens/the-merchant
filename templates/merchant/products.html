@@ -1,0 +1,22 @@
+{% extends 'merchant/base.html' %}
+ {% load static %} <!-- New line -->
+  
+{% block body_block %}
+
+<link href="{% static 'css/products.css' %} " rel="stylesheet" type="text/css" media="screen"> 
+
+<div class="hero-unit" margin-left="0">
+
+	<ul class="enlarge">
+		{% for product in products %} 						
+				<li><img src="{{MEDIA_URL}}{{product.image}}" width="80px" height="120px" alt="Dechairs" />
+				<span><img src="{{MEDIA_URL}}{{product.image}}" alt="Deckchairs" />
+					<a href="/merchant/product_detail/{{product.slug}}">{{product.name}}</a>
+<!--						<a href="{{ product.get_absolute_url }}">{{product.name}}</a> -->
+				</span></li>
+		{% endfor %} 
+	</ul>
+</div>
+
+{% endblock %}
+

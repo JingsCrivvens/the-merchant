@@ -1,0 +1,84 @@
+{% extends 'merchant/base.html' %}
+ {% load static %} <!-- New line -->
+ 
+{% block sidebar %}
+    <div class="breadcrumbs">
+        <a href="/merchant/">Home</a> 
+        
+              
+<!--        {% if category %}
+            &rsaquo; <a href="/merchant/category/{{ category.name }}">{{ category.name}}</a>
+        {% endif %} -->
+        
+        {% if categories %}
+            {% include 'merchant/category_list.html' with categories=categories %}
+        {% endif %}
+     </div>
+{% endblock %}
+
+{% block body_block %}
+<div class="hero-unit">
+    <h1>The Inverness merchant</h1>
+    {% for m in menuItems %}
+        <a href="/merchant/menu/{{ m.url_str }}">{{ m.name }}</a> 
+    {% endfor %}
+
+    {% if products %}
+        {% for p in products %}
+            <li>{{ p.name }}</li><br/>
+            <img src="media/{{p.image }}" alt="Pictures" /><br/> <!-- New line -->
+        {% endfor %}
+    {% else %}
+        <li>No products at present.</li>
+    {% endif %}
+
+</div>
+{% endblock %}
+
+<!--
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title>Inverness Merchant</title>
+    </head>
+
+    <body>
+        <h1>Inverness Merchant...hello world! </h1>
+        {{ from }}
+        <h1>{{ category_name }}</h1>
+        {% if category %}
+            {% if subCategories %}
+            <ul>
+                {% for sc in subCategories %}
+                <li><a href="/merchant/subCategory/{{ sc.name }}">{{ sc.name }}</a></li>                
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No sub Categories currently in category.</strong>
+            {% endif %}
+        {% else %}
+            The specified category {{ category_name }} does not exist!
+        {% endif %}        
+        <h1>{{ sub_category_name }}</h1>
+        {% if sub_category %}
+            {% if products %}
+            <ul>
+                {% for p in products %}
+                <li><a href="{{ p.name }}">{{ p.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% else %}
+                <strong>No products currently in category.</strong>
+            {% endif %}
+        {% else %}
+            The specified category {{ category_name }} does not exist!
+        {% endif %}
+    </body>
+        
+        <a href="/merchant/about/">About</a><br />
+    </body>
+
+</html>
+-->

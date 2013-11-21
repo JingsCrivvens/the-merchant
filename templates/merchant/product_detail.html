@@ -1,0 +1,27 @@
+{% extends "merchant/base.html" %}
+
+
+{% block body_block %}
+<div class="hero-unit">
+     {% if product.image %}
+		<img src="{{MEDIA_URL}}{{product.image}}" width="220px" height="280px" alt="Dechairs" />
+    {% endif %}
+		<small>
+		<address>
+	
+	    {{product.name}}<br>
+	    Price: {{product.price}}<br>
+		Description: {{product.description}}
+	</address>
+	</small>
+ 
+
+</div>
+
+  
+<!--  <form method="post" action="{% url 'cart' %}">{% csrf_token %}
+  <input type="hidden" name="add_item_id" value="{{object.id}}">
+  <input type="hidden" name="add_item_quantity" value="1">
+  <input type="submit" value="Add to cart">
+  </form> -->
+{% endblock %}

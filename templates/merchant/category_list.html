@@ -1,0 +1,13 @@
+		<ul class="nav nav-list">
+		    {% if categories %}
+		        {% for cat in categories %}	
+					{% if category %}
+                    	<li><a href="/merchant/catalog/{{ menuItem.slug }}/{{ category.slug }}/{{cat.slug}}  ">{{ cat.name }}</a></li> 
+					{% else %}
+						<li><a href="/merchant/catalog/{{ menuItem.slug }}/{{cat.slug }}  ">{{ cat.name }}</a></li> 
+					{% endif %}	
+		        {% endfor %}
+		    {% else %}
+		        <li>No categories at present.</li>
+		   {% endif %}
+		</ul>
